@@ -5,74 +5,230 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kate's Blog</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            /* Light theme (warm colors) */
+            --bg-primary: #faf4ed;
+            --bg-secondary: #fffaf4;
+            --text-primary: #575279;
+            --text-secondary: #797593;
+            --accent: #ae6eb1;
+            --border: #f2e9e1;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            /* Dark theme (cool colors) */
+            --bg-primary: #232136;
+            --bg-secondary: #2a273f;
+            --text-primary: #e0def4;
+            --text-secondary: #908caa;
+            --accent: #3e8fb0;
+            --border: #44415a;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            background-color: #f3e5f5; /* Light pastel purple */
+            min-height: 100vh;
         }
-        header, footer {
-            background-color: #e1bee7; /* Pastel purple */
-            width: 100%;
+
+        header {
+            background-color: var(--bg-secondary);
+            padding: 2rem 1rem;
             text-align: center;
-            padding: 1em 0;
-            color: #4a148c; /* Dark purple for text */
+            border-bottom: 2px solid var(--border);
+            position: relative;
         }
+
+        .theme-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
         main {
             max-width: 800px;
-            width: 100%;
-            padding: 1em;
-            background-color: #f8bbd0; /* Very light pastel purple */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            flex-grow: 1;
         }
+
+        #about-me {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px var(--shadow);
+            margin-bottom: 3rem;
+            border: 2px solid var(--border);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            text-decoration: none;
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
         article {
-            margin-bottom: 2em;
-            background-color: #e1bee7; /* Pastel purple */
-            padding: 1em;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px var(--shadow);
+            margin-bottom: 2rem;
+            border: 2px solid var(--border);
         }
-        a {
-            color: #6a1b9a; /* Medium purple for links */
+
+        article h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        article p {
+            color: var(--text-secondary);
+        }
+
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 1rem;
+            text-align: center;
+            border-top: 2px solid var(--border);
+            margin-top: auto;
+        }
+
+        /* Whimsical elements */
+        h1::after {
+            content: "✨";
+            margin-left: 0.5rem;
+        }
+
+        article::before {
+            content: "📝";
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                width: 95%;
+            }
+            
+            .social-links {
+                flex-direction: column;
+            }
+            
+            .social-link {
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
     <header>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
         <h1>My Blog</h1>
+        <p>Thoughts, musings, and bits of wisdom</p>
     </header>
-    <section id="about-me">
-        <h2>About Me</h2>
-        <p>Hello! This is a place for my thoughts, musings, learnings, and bits and bobs. An intentional experiment in the tiny web.</p>
-        <p>🌐 <a href="https://kdubarry.com" target="_blank">My Full Website</a></p>
-        <p>💼 <a href="https://www.linkedin.com/in/katie-dubarry" target="_blank">LinkedIn</a></p>
-        <p>🌌 <a href="https://bsky.app/profile/airendaie.bsky.social" target="_blank">Bluesky</a></p>
-    </section>
-    <main id="blog-posts">
-        <!-- Blog posts will be dynamically loaded here -->
+
+    <main>
+        <section id="about-me">
+            <h2>About Me</h2>
+            <p>Hello! This is a place for my thoughts, musings, learnings, and bits and bobs. An intentional experiment in the tiny web.</p>
+            <div class="social-links">
+                <a href="https://kdubarry.com" target="_blank" class="social-link">🌐 My Website</a>
+                <a href="https://www.linkedin.com/in/katie-dubarry" target="_blank" class="social-link">💼 LinkedIn</a>
+                <a href="https://bsky.app/profile/airendaie.bsky.social" target="_blank" class="social-link">🌌 Bluesky</a>
+            </div>
+        </section>
+
+        <div id="blog-posts">
+            <!-- Blog posts will be dynamically loaded here -->
+        </div>
     </main>
+
     <footer>
-        <p>&copy; 2025 K Dubarry</p>
+        <p>&copy; 2025 K Dubarry | Made with ❤️ for the tiny web</p>
     </footer>
+
     <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Set initial theme based on user preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+
+        // Load blog posts
         async function loadPosts() {
-            const response = await fetch('/posts/index.json');
-            const posts = await response.json();
-            const postsContainer = document.getElementById('blog-posts');
-            posts.forEach(post => {
-                const article = document.createElement('article');
-                const title = document.createElement('h2');
-                title.textContent = post.title;
-                const content = document.createElement('p');
-                content.textContent = post.content;
-                article.appendChild(title);
-                article.appendChild(content);
-                postsContainer.appendChild(article);
-            });
+            try {
+                const response = await fetch('/posts/index.json');
+                const posts = await response.json();
+                const postsContainer = document.getElementById('blog-posts');
+                posts.forEach(post => {
+                    const article = document.createElement('article');
+                    const title = document.createElement('h2');
+                    title.textContent = post.title;
+                    const content = document.createElement('p');
+                    content.textContent = post.content;
+                    article.appendChild(title);
+                    article.appendChild(content);
+                    postsContainer.appendChild(article);
+                });
+            } catch (error) {
+                console.error('Error loading posts:', error);
+            }
         }
         loadPosts();
     </script>
