@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Blog</title>
+    <title>Kate's Blog</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,20 +12,32 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: #f3e5f5; /* Light pastel purple */
         }
         header, footer {
-            background-color: #f8f9fa;
+            background-color: #e1bee7; /* Pastel purple */
             width: 100%;
             text-align: center;
             padding: 1em 0;
+            color: #4a148c; /* Dark purple for text */
         }
         main {
             max-width: 800px;
             width: 100%;
             padding: 1em;
+            background-color: #f8bbd0; /* Very light pastel purple */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         article {
             margin-bottom: 2em;
+            background-color: #e1bee7; /* Pastel purple */
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            color: #6a1b9a; /* Medium purple for links */
         }
     </style>
 </head>
@@ -35,16 +47,16 @@
     </header>
     <section id="about-me">
         <h2>About Me</h2>
-        <p>Hello! I'm a passionate blogger who loves to share thoughts and ideas on various topics. Welcome to my blog!</p>
+        <p>Hello! This is a place for my thoughts, musings, learnings, and bits and bobs. An intentional experiment in the tiny web.</p>
         <p>🌐 <a href="https://kdubarry.com" target="_blank">My Full Website</a></p>
-        <p>💼 <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></p>
-        <p>🌌 <a href="https://bsky.app/profile/yourprofile" target="_blank">Bluesky</a></p>
+        <p>💼 <a href="https://www.linkedin.com/in/katie-dubarry" target="_blank">LinkedIn</a></p>
+        <p>🌌 <a href="https://bsky.app/profile/airendaie.bsky.social" target="_blank">Bluesky</a></p>
     </section>
     <main id="blog-posts">
         <!-- Blog posts will be dynamically loaded here -->
     </main>
     <footer>
-        <p>&copy; 2023 My Simple Blog</p>
+        <p>&copy; 2025 K Dubarry</p>
     </footer>
     <script>
         async function loadPosts() {
