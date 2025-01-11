@@ -1,4 +1,6 @@
+---
+layout: post
+title:  "First post!"
+---
 
-# First Post
-
-Welcome to my blog! This is my first post.
+This is the first post to my blog using Jekyll and markdown
